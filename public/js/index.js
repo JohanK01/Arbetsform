@@ -18,6 +18,11 @@ const Load = (res) => {
     results = res[0];
     console.log(results)
 
+    let countertest = document.createElement('h3');
+    countertest.textContent = results.length + 'st annonser';
+    document.getElementById('counter').appendChild(countertest);
+
+
     results.forEach(data => {
         const div = document.createElement('div');
         div.className = 'container';
@@ -28,7 +33,7 @@ const Load = (res) => {
         div.appendChild(row);
 
         const col = document.createElement('div');
-        col.className = 'col bg-primary my-3 py-3 rounded-3';
+        col.className = 'col bg-primary my-3 py-3 rounded-3 border border-dark border-3';
         row.appendChild(col);
 
         const h3 = document.createElement('h3');
@@ -37,7 +42,7 @@ const Load = (res) => {
         col.appendChild(h3);
 
         const p = document.createElement('p');
-        p.className = 'text-center text-light';  
+        p.className = 'text-center text-light';
         p.textContent = `Företag: ${data.companyName}`;
         col.appendChild(p);
 
@@ -46,31 +51,42 @@ const Load = (res) => {
         location.textContent = data.location;
         col.appendChild(location);
 
-        
-
         const desc = document.createElement('p');
-        desc.className = 'text-light m-1 p-3 desc';
+        desc.className = 'text-light m-1 p-3';
         desc.id = 'desc'
         desc.textContent = data.description;
         col.appendChild(desc);
 
+        // const more = document.createElement('a');
+        // more.addEventListener('click', showMore);
+        // more.textContent = 'läs mer'
+        // more.className = 'text-start text-center text-warning';
+        // col.appendChild(more);
 
         const date = document.createElement('p');
         date.className = 'text-start text-light';
         date.textContent = data.date;
         col.appendChild(date);
 
-        
-        var a = document.createElement('a');
+        let a = document.createElement('a');
         a.href = data.jobLink;
         col.appendChild(a);
         a.className = 'text-end text light';
-        var link = document.createTextNode('\u{1F517}');
+
+        let link = document.createTextNode('\u{1F517}');
         a.appendChild(link);
-         
+
+        // let btn = document.createElement("button");
+        // btn.className = 'btn button bg-warning'
+        // btn.innerHTML = "Save";
+        // col.appendChild(btn);
 
     });
 
 }
 
+// const showMore = () => {
+//     let info = document.getElementById('desc');
+//     info.className = 'text-light m-1 p-3'
+// }
 

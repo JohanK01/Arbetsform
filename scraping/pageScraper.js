@@ -31,7 +31,6 @@ const scraperObject = {
                 dataObj['jobLink'] = link;
 
 
-
                 
                 resolve(dataObj);
                 await newPage.close();
@@ -41,6 +40,7 @@ const scraperObject = {
                 let currentPageData = await pagePromise(urls[link]);
                 scrapedData.push(currentPageData);
                 console.log(currentPageData);
+                console.log(counter);
                 
             }
             
